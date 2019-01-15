@@ -1,0 +1,3 @@
+Line_Chart_in_Cartesian_Coordinate_System
+
+var option = {\n    xAxis: {},\n    yAxis: {},\n    series: [{\n        data: [[20, 120], [50, 200], [40, 50]],\n        type: \'line\'\n    }]\n};\n

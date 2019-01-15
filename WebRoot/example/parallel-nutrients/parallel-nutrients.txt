@@ -1,0 +1,35 @@
+parallel-nutrients
+
+
+var indices = {\n
+    name: 0,\n
+    group: 1,\n
+    id: 16\n
+};\n
+var schema = [\n
+    {name: \'name\', index: 0},\n
+    {name: \'group\', index: 1},\n
+    {name: \'protein\', index: 2},\n
+    {name: \'calcium\', index: 3},\n
+    {name: \'sodium\', index: 4},\n
+    {name: \'fiber\', index: 5},\n
+    {name: \'vitaminc\', index: 6},\n
+    {name: \'potassium\', index: 7},\n
+    {name: \'carbohydrate\', index: 8},\n
+    {name: \'sugars\', index: 9},\n
+    {name: \'fat\', index: 10},\n
+    {name: \'water\', index: 11},\n
+    {name: \'calories\', index: 12},\n
+    {name: \'saturated\', index: 13},\n
+    {name: \'monounsat\', index: 14},\n
+    {name: \'polyunsat\', index: 15},\n
+    {name: \'id\', index: 16}\n
+];\n
+\n
+var groupCategories = [];\n
+var groupColors = [];\n
+\n
+ $.get(\'./data/asset/data/nutrients.json\', function (data) {\n
+    normalizeData(data);\n\n    myChart.setOption(option = getOption(data));\n\n});\n\n\nfunction normalizeData(originData) {\n    var groupMap = {};\n    originData.forEach(function (row) {\n        var groupName = row[indices.group];\n        if (!groupMap.hasOwnProperty(groupName)) {\n            groupMap[groupName] = 1;\n        }\n    });\n\n    originData.forEach(function (row) {\n        row.forEach(function (item, index) {\n            if (index !== indices.name\n                && index !== indices.group\n                && index !== indices.id\n            ) {\n                // Convert null to zero, as all of them under unit "g".\n                row[index] = parseFloat(item) || 0;\n            }\n        });\n    });\n\n    for (var groupName in groupMap) {\n        if (groupMap.hasOwnProperty(groupName)) {\n            groupCategories.push(groupName);\n        }\n    }\n    var hStep = Math.round(300 / (groupCategories.length - 1));\n    for (var i = 0; i < groupCategories.length; i++) {\n        groupColors.push(echarts.color.modifyHSL(\'#5A94DF\', hStep * i));\n    }\n}\n\nfunction getOption(data) {\n\n    var lineStyle = {\n        normal: {\n            width: 0.5,\n            opacity: 0.05\n        }\n    };\n\n    return {\n        backgroundColor: \'#333\',\n        tooltip: {\n            padding: 10,\n            backgroundColor: \'#222\',\n            borderColor: \'#777\',\n            borderWidth: 1,\n            formatter: function (obj) {\n                var value = obj[0].value;\n                return \'<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">\'\n                    + schema[1].name + \'：\' + value[1] + \'<br>\'\n                    + schema[2].name + \'：\' + value[2] + \'<br>\'\n                    + schema[3].name + \'：\' + value[3] + \'<br>\'\n                    + schema[4].name + \'：\' + value[4] + \'<br>\'\n                    + schema[5].name + \'：\' + value[5] + \'<br>\'\n                    + schema[6].name + \'：\' + value[6] + \'<br>\';\n            }\n        },\n        title: [\n            {\n                text: \'Groups\',\n                top: 0,\n                left: 0,\n                textStyle: {\n                    color: \'#fff\'\n                }\n            }\n        ],\n        visualMap: {\n            show: true,\n            type: \'piecewise\',\n            categories: groupCategories,\n            dimension: indices.group,\n            inRange: {\n                color: groupColors //[\'#d94e5d\',\'#eac736\',\'#50a3ba\']\n            },\n            outOfRange: {\n                color: [\'#ccc\'] //[\'#d94e5d\',\'#eac736\',\'#50a3ba\']\n            },\n            top: 20,\n            textStyle: {\n                color: \'#fff\'\n            },\n            realtime: false\n        },\n        parallelAxis: [\n            {dim: 16, name: schema[16].name, scale: true, nameLocation: \'end\'},\n            {dim: 2, name: schema[2].name, nameLocation: \'end\'},\n            {dim: 4, name: schema[4].name, nameLocation: \'end\'},\n            {dim: 3, name: schema[3].name, nameLocation: \'end\'},\n            {dim: 5, name: schema[5].name, nameLocation: \'end\'},\n            {dim: 6, name: schema[6].name, nameLocation: \'end\'},\n            {dim: 7, name: schema[7].name, nameLocation: \'end\'},\n            {dim: 8, name: schema[8].name, nameLocation: \'end\'},\n            {dim: 9, name: schema[9].name, nameLocation: \'end\'},\n            {dim: 10, name: schema[10].name, nameLocation: \'end\'},\n            {dim: 11, name: schema[11].name, nameLocation: \'end\'},\n            {dim: 12, name: schema[12].name, nameLocation: \'end\'},\n            {dim: 13, name: schema[13].name, nameLocation: \'end\'},\n            {dim: 14, name: schema[14].name, nameLocation: \'end\'},\n            {dim: 15, name: schema[15].name, nameLocation: \'end\'}\n        ],\n        parallel: {\n            left: 280,\n            top: 20,\n            // top: 150,\n            // height: 300,\n            width: 400,\n            layout: \'vertical\',\n            parallelAxisDefault: {\n                type: \'value\',\n                name: \'nutrients\',\n                nameLocation: \'end\',\n                nameGap: 20,\n                nameTextStyle: {\n                    color: \'#fff\',\n                    fontSize: 14\n                },\n                axisLine: {\n                    lineStyle: {\n                        color: \'#aaa\'\n                    }\n                },\n                axisTick: {\n                    lineStyle: {\n                        color: \'#777\'\n                    }\n                },\n                splitLine: {\n                    show: false\n                },\n                axisLabel: {\n                    textStyle: {\n                        color: \'#fff\'\n                    }\n                },\n                realtime: false\n            }\n        },        animation: false,\n        series: [\n            {\n                name: \'nutrients\',\n                type: \'parallel\',\n                lineStyle: lineStyle,\n                inactiveOpacity: 0,\n                activeOpacity: 0.01,\n                progressive: 500,\n                smooth: true,\n                data: data\n            }\n        ]\n    };\n}\n
+
+

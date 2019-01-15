@@ -1,0 +1,3 @@
+Two_Value-Axes_in_Polar_1
+
+var data = [];\n\nfor (var i = 0; i <= 100; i++) {\n    var theta = i / 100 * 360;\n    var r = 5 * (1 + Math.sin(theta / 180 * Math.PI));\n    data.push([r, theta]);\n}\n\nvar option = {\n    title: {\n        text: \'极坐标双数值轴\'\n    },\n    legend: {\n        data: [\'line\']\n    },\n    polar: {},\n    tooltip: {\n        trigger: \'axis\',\n        axisPointer: {\n            type: \'cross\'\n        }\n    },\n    angleAxis: {\n        type: \'value\',\n        startAngle: 0\n    },\n    radiusAxis: {\n    },\n    series: [{\n        coordinateSystem: \'polar\',\n        name: \'line\',\n        type: \'line\',        data: data\n    }]\n};\n

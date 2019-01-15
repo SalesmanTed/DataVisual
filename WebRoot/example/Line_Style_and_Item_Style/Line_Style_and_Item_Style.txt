@@ -1,0 +1,3 @@
+Line_Style_and_Item_Style
+
+var option = {\n    xAxis: {\n        type: \'category\',\n        data: [\'Mon\', \'Tue\', \'Wed\', \'Thu\', \'Fri\', \'Sat\', \'Sun\']\n    },\n    yAxis: {\n        type: \'value\'\n    },\n    series: [{\n        data: [120, 200, 150, 80, 70, 110, 130],\n        type: \'line\',\n        symbol: \'triangle\',\n        symbolSize: 20,\n        lineStyle: {\n            normal: {\n                color: \'green\',\n                width: 4,\n                type: \'dashed\'\n            }\n        },\n        itemStyle: {\n            normal: {\n                borderWidth: 3,\n                borderColor: \'yellow\',\n                color: \'blue\'\n            }\n        }\n    }]\n};\n

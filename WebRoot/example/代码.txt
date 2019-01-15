@@ -1,0 +1,70 @@
+Basic Line Chart
+
+var option = {\n    xAxis: {\n        type: \'category\',\n        boundaryGap: false,\n        data: [\'Mon\', \'Tue\', \'Wed\', \'Thu\', \'Fri\', \'Sat\', \'Sun\']\n    },\n    yAxis: {\n        type: \'value\'\n    },\n    series: [{\n        data: [820, 932, 901, 934, 1290, 1330, 1320],\n        type: \'line\',\n        areaStyle: {}\n    }]\n};\n
+
+
+Basic Area Chart
+
+var option = {\n    xAxis: {\n        type: \'category\',\n        data: [\'Mon\', \'Tue\', \'Wed\', \'Thu\', \'Fri\', \'Sat\', \'Sun\']\n    },\n    yAxis: {\n        type: \'value\'\n    },\n    series: [{\n        data: [820, 932, 901, 934, 1290, 1330, 1320],\n        type: \'line\'\n    }]\n};\n
+
+Smoothed_Line_Chart
+
+var option = {\n    xAxis: {\n        type: \'category\',\n        data: [\'Mon\', \'Tue\', \'Wed\', \'Thu\', \'Fri\', \'Sat\', \'Sun\']\n    },\n    yAxis: {\n        type: \'value\'\n    },\n    series: [{\n        data: [820, 932, 901, 934, 1290, 1330, 1320],\n        type: \'line\',\n        smooth: true\n    }]\n};\n
+
+
+Stacked_Area_Chart
+
+var option = {\n    title: {\n        text: \'堆叠区域图\'\n    },\n    tooltip : {\n        trigger: \'axis\',\n        axisPointer: {\n            type: \'cross\',\n            label: {\n                backgroundColor: \'#6a7985\'\n            }\n        }\n    },\n    legend: {\n        data:[\'邮件营销\',\'联盟广告\',\'视频广告\',\'直接访问\',\'搜索引擎\']\n    },\n    toolbox: {\n        feature: {\n            saveAsImage: {}\n        }\n    },\n    grid: {\n        left: \'3%\',\n        right: \'4%\',\n        bottom: \'3%\',\n        containLabel: true\n    },\n    xAxis : [\n        {\n            type : \'category\',\n            boundaryGap : false,\n            data : [\'周一\',\'周二\',\'周三\',\'周四\',\'周五\',\'周六\',\'周日\']\n        }\n    ],\n    yAxis : [\n        {\n            type : \'value\'\n        }\n    ],\n    series : [\n        {\n            name:\'邮件营销\',\n            type:\'line\',\n            stack: \'总量\',\n            areaStyle: {normal: {}},\n            data:[120, 132, 101, 134, 90, 230, 210]\n        },\n        {\n            name:\'联盟广告\',\n            type:\'line\',\n            stack: \'总量\',\n            areaStyle: {normal: {}},\n            data:[220, 182, 191, 234, 290, 330, 310]\n        },\n        {\n            name:\'视频广告\',\n            type:\'line\',\n            stack: \'总量\',\n            areaStyle: {normal: {}},\n            data:[150, 232, 201, 154, 190, 330, 410]\n        },\n        {\n            name:\'直接访问\',\n            type:\'line\',\n            stack: \'总量\',\n            areaStyle: {normal: {}},\n            data:[320, 332, 301, 334, 390, 330, 320]\n        },\n        {\n            name:\'搜索引擎\',\n            type:\'line\',\n            stack: \'总量\',\n            label: {\n                normal: {\n                    show: true,\n                    position: \'top\'\n                }\n            },\n            areaStyle: {normal: {}},\n            data:[820, 932, 901, 934, 1290, 1330, 1320]\n        }\n    ]\n};\n
+
+
+Stacked_Line_Chart
+
+var option = {\n    title: {\n        text: \'折线图堆叠\'\n    },\n    tooltip: {\n        trigger: \'axis\'\n    },\n    legend: {\n        data:[\'邮件营销\',\'联盟广告\',\'视频广告\',\'直接访问\',\'搜索引擎\']\n    },\n    grid: {\n        left: \'3%\',\n        right: \'4%\',\n        bottom: \'3%\',\n        containLabel: true\n    },\n    toolbox: {\n        feature: {\n            saveAsImage: {}\n        }\n    },\n    xAxis: {\n        type: \'category\',\n        boundaryGap: false,\n        data: [\'周一\',\'周二\',\'周三\',\'周四\',\'周五\',\'周六\',\'周日\']\n    },\n    yAxis: {\n        type: \'value\'\n    },\n    series: [\n        {\n            name:\'邮件营销\',\n            type:\'line\',\n            stack: \'总量\',\n            data:[120, 132, 101, 134, 90, 230, 210]\n        },\n        {\n            name:\'联盟广告\',\n            type:\'line\',\n            stack: \'总量\',\n            data:[220, 182, 191, 234, 290, 330, 310]\n        },\n        {\n            name:\'视频广告\',\n            type:\'line\',\n            stack: \'总量\',\n            data:[150, 232, 201, 154, 190, 330, 410]\n        },\n        {\n            name:\'直接访问\',\n            type:\'line\',\n            stack: \'总量\',\n            data:[320, 332, 301, 334, 390, 330, 320]\n        },\n        {\n            name:\'搜索引擎\',\n            type:\'line\',\n            stack: \'总量\',\n            data:[820, 932, 901, 934, 1290, 1330, 1320]\n        }\n    ]\n};\n
+
+
+Rainfall
+
+
+
+Large_Scale_Area_Chart
+
+Confidence_Band
+
+Dynamic_Data+Time_Axis
+
+Rainfall_and_Water_Flow
+
+Beijing_AQI
+
+Try_Dragging_These_Points
+
+Line_Easing
+
+Line_Gradient
+
+Line_Chart_in_Cartesian_Coordinate_System
+
+Log_Axis
+
+Temperature_Change_in_the_Coming_Week
+
+Click_to_Add_Points
+
+Two_Value-Axes_in_Polar_1
+
+Two_Value-Axes_in_Polar_2
+
+Distribution_of_Electricity
+
+Step_Line
+
+Line_Style_and_Item_Style	
+
+Tooltip_and_DataZoom_on_Mobile
+
+Line_Y_Category
+
+Multiple_X_Axes
+
+
+
